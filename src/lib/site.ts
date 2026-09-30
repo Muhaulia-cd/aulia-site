@@ -1,8 +1,8 @@
 export const SITE = {
-  title: 'Aulia — Developer & Educator',
+  title: 'Aulia',
   name: 'Aulia',
   description:
-    'Personal showcase and blog by Aulia — software developer, educator, and vibe coder. Writing about coding, teaching, and building with AI.',
+    'Educator and software developer. I write about building software, teaching, and working with AI.',
   url: 'https://aulia.dev',
   twitter: '@auliadev',
   email: 'hello@aulia.dev',

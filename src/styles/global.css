@@ -1,9 +1,45 @@
 @import "tailwindcss";
 
+/* Class-based dark mode: `.dark` on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-accent: #6366f1;
-  --color-accent-soft: #eef2ff;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Source Sans 3 Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-fg-soft: var(--fg-soft);
+  --color-fg-faint: var(--fg-faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+}
+
+:root {
+  --bg: #faf6ee;
+  --surface: #fffdf8;
+  --fg: #211d17;
+  --fg-soft: #6b6350;
+  --fg-faint: #9a917c;
+  --line: #e6decb;
+  --accent: #b54a2d;
+  --accent-fg: #fffaf4;
+  --accent-soft: #f4e2d8;
+}
+
+.dark {
+  --bg: #191612;
+  --surface: #221d17;
+  --fg: #ece5d6;
+  --fg-soft: #b3a88f;
+  --fg-faint: #7d7463;
+  --line: #332d24;
+  --accent: #d97b58;
+  --accent-fg: #211a12;
+  --accent-soft: #3a2a20;
 }
 
 html {
@@ -11,28 +47,54 @@ html {
 }
 
 body {
-  @apply bg-zinc-50 text-zinc-800 antialiased;
+  @apply bg-bg text-fg antialiased;
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
 }
 
-.dark body {
-  @apply bg-zinc-950 text-zinc-200;
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
 }
 
-/* Blog prose styling */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Editorial blog prose */
+.prose-blog {
+  @apply text-[1.0625rem] leading-[1.8] text-fg-soft;
+}
+.prose-blog > * + * {
+  @apply mt-6;
+}
 .prose-blog h1,
 .prose-blog h2,
 .prose-blog h3 {
-  @apply font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mt-8 mb-3;
+  font-family: var(--font-serif);
+  @apply font-semibold leading-tight text-fg;
 }
-.prose-blog h1 { @apply text-3xl; }
-.prose-blog h2 { @apply text-2xl; }
-.prose-blog h3 { @apply text-xl; }
-.prose-blog p { @apply my-4 leading-relaxed; }
-.prose-blog a { @apply text-accent underline underline-offset-2; }
-.prose-blog ul { @apply list-disc pl-6 my-4 space-y-1; }
-.prose-blog ol { @apply list-decimal pl-6 my-4 space-y-1; }
-.prose-blog code { @apply rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 text-sm; }
-.prose-blog pre { @apply rounded-xl bg-zinc-900 text-zinc-100 p-4 overflow-x-auto my-4; }
+.prose-blog h1 { @apply text-3xl sm:text-4xl; }
+.prose-blog h2 { @apply mt-12 text-2xl; }
+.prose-blog h3 { @apply mt-10 text-xl; }
+.prose-blog p { @apply leading-[1.8]; }
+.prose-blog a {
+  @apply text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent;
+}
+.prose-blog ul { @apply list-disc space-y-2 pl-6; }
+.prose-blog ol { @apply list-decimal space-y-2 pl-6; }
+.prose-blog li::marker { color: var(--accent); }
+.prose-blog strong { @apply font-semibold text-fg; }
+.prose-blog code {
+  @apply rounded bg-accent-soft px-1.5 py-0.5 text-[0.9em] text-fg;
+}
+.prose-blog pre {
+  @apply overflow-x-auto rounded-md border border-line bg-surface p-4 text-[0.9rem];
+}
 .prose-blog pre code { @apply bg-transparent p-0; }
-.prose-blog blockquote { @apply border-l-4 border-accent pl-4 italic my-4 text-zinc-600 dark:text-zinc-400; }
-.prose-blog img { @apply rounded-xl my-4; }
+.prose-blog blockquote {
+  @apply border-l-2 border-accent pl-5 italic text-fg;
+}
+.prose-blog img { @apply rounded-md; }
+.prose-blog hr { @apply border-line; }
