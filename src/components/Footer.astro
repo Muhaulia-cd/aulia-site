@@ -1,0 +1,14 @@
+---
+import { SITE } from '../lib/site';
+---
+
+<footer class="mt-auto border-t border-zinc-200 dark:border-zinc-800">
+  <div class="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-zinc-500 sm:flex-row">
+    <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
+    <div class="flex gap-4">
+      <a href={SITE.github} class="hover:text-accent transition">GitHub</a>
+      <a href={SITE.linkedin} class="hover:text-accent transition">LinkedIn</a>
+      <a href={`mailto:${SITE.email}`} class="hover:text-accent transition">Email</a>
+    </div>
+  </div>
+</footer>

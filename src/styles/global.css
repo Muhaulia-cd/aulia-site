@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #6366f1;
+  --color-accent-soft: #eef2ff;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-zinc-50 text-zinc-800 antialiased;
+}
+
+.dark body {
+  @apply bg-zinc-950 text-zinc-200;
+}
+
+/* Blog prose styling */
+.prose-blog h1,
+.prose-blog h2,
+.prose-blog h3 {
+  @apply font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mt-8 mb-3;
+}
+.prose-blog h1 { @apply text-3xl; }
+.prose-blog h2 { @apply text-2xl; }
+.prose-blog h3 { @apply text-xl; }
+.prose-blog p { @apply my-4 leading-relaxed; }
+.prose-blog a { @apply text-accent underline underline-offset-2; }
+.prose-blog ul { @apply list-disc pl-6 my-4 space-y-1; }
+.prose-blog ol { @apply list-decimal pl-6 my-4 space-y-1; }
+.prose-blog code { @apply rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 text-sm; }
+.prose-blog pre { @apply rounded-xl bg-zinc-900 text-zinc-100 p-4 overflow-x-auto my-4; }
+.prose-blog pre code { @apply bg-transparent p-0; }
+.prose-blog blockquote { @apply border-l-4 border-accent pl-4 italic my-4 text-zinc-600 dark:text-zinc-400; }
+.prose-blog img { @apply rounded-xl my-4; }

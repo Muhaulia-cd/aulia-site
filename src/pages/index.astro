@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../lib/site';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<Layout>
+  <Nav />
+
+  <main class="mx-auto w-full max-w-4xl flex-1 px-6">
+    <!-- Hero -->
+    <section class="py-20 sm:py-28">
+      <p class="mb-4 text-sm font-semibold uppercase tracking-widest text-accent">Developer · Educator · Vibe Coder</p>
+      <h1 class="max-w-2xl text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-100">
+        Hi, I'm {SITE.name} — I build things and teach others to build too.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+        {SITE.description}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/blog" class="rounded-lg bg-accent px-5 py-2.5 font-medium text-white transition hover:opacity-90">Read the blog</a>
+        <a href="/about" class="rounded-lg border border-zinc-300 px-5 py-2.5 font-medium text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-800">About me</a>
+      </div>
+    </section>
+
+    <!-- Latest posts -->
+    <section class="pb-20">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-2xl font-bold tracking-tight">Latest posts</h2>
+        <a href="/blog" class="text-sm font-medium text-accent hover:underline">View all →</a>
+      </div>
+      <div class="grid gap-4">
+        {posts.length === 0 && <p class="text-zinc-500">No posts yet — check back soon.</p>}
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="group rounded-xl border border-zinc-200 bg-white p-6 transition hover:border-accent hover:shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
+          >
+            <p class="text-xs text-zinc-500">{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <h3 class="mt-2 text-lg font-semibold text-zinc-900 group-hover:text-accent dark:text-zinc-100">{post.data.title}</h3>
+            <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
