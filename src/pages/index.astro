@@ -16,10 +16,16 @@ const posts = (await getCollection('blog'))
 
   <main class="mx-auto w-full max-w-3xl flex-1 px-6">
     <section class="py-20 sm:py-28">
-      <h1 class="font-serif text-4xl font-semibold leading-tight tracking-tight text-fg sm:text-5xl">
-        {SITE.name}, writing about building software and teaching others to do the same.
+      <p class="mb-4 text-lg font-medium text-accent">
+        Hi, It's Aulia Here 👋
+      </p>
+      <h1 class="font-serif text-5xl font-semibold leading-tight tracking-tight text-fg sm:text-6xl">
+        {SITE.name}
       </h1>
-      <p class="mt-6 max-w-xl text-lg leading-relaxed text-fg-soft">
+      <p class="mt-4 max-w-xl text-xl leading-relaxed text-fg-soft">
+        Writing about building software and teaching others to do the same.
+      </p>
+      <p class="mt-3 max-w-xl text-lg leading-relaxed text-fg-soft">
         {SITE.description}
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
