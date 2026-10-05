@@ -15,38 +15,38 @@ const posts = (await getCollection('blog'))
   <Nav />
 
   <main class="mx-auto w-full max-w-3xl flex-1 px-6">
-    <section class="py-20 sm:py-28">
-      <p class="mb-4 text-lg font-medium text-accent">
-        Hi, It's Aulia Here 👋
+    <section class="py-24 sm:py-32">
+      <p class="font-mono mb-6 text-[13px] tracking-[0.4px] text-fg-soft">
+        Hi, it's Aulia here
       </p>
-      <h1 class="font-serif text-5xl font-semibold leading-tight tracking-tight text-fg sm:text-6xl">
+      <h1 class="font-sans text-5xl font-normal leading-[1.06] tracking-[-0.04em] text-fg sm:text-7xl">
         {SITE.name}
       </h1>
-      <p class="mt-4 text-xl leading-relaxed text-fg-soft">
+      <p class="font-mono mt-6 max-w-xl text-[15px] leading-[1.6] tracking-[0.6px] text-fg-soft">
         {SITE.description}
       </p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="/blog" class="rounded-md bg-accent px-5 py-2.5 font-medium text-accent-fg transition hover:opacity-90">Read the writing</a>
-        <a href="/about" class="rounded-md border border-line px-5 py-2.5 font-medium text-fg transition hover:bg-surface">About me</a>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="/blog" class="font-sans rounded-sm bg-accent px-4 py-2 text-[15px] font-normal text-accent-fg transition hover:opacity-90">Read the writing</a>
+        <a href="/about" class="font-sans rounded-sm border border-line px-4 py-2 text-[15px] font-normal text-fg-soft transition hover:text-fg">About me</a>
       </div>
     </section>
 
-    <section class="pb-20">
+    <section class="pb-24">
       <div class="mb-6 flex items-baseline justify-between border-b border-line pb-3">
-        <h2 class="font-serif text-2xl font-semibold tracking-tight">Latest writing</h2>
-        <a href="/blog" class="text-sm font-medium text-accent hover:underline">All posts</a>
+        <h2 class="font-sans text-xl font-normal tracking-tight text-fg">Latest writing</h2>
+        <a href="/blog" class="font-mono text-[13px] tracking-[0.4px] text-fg-soft hover:text-fg">All posts</a>
       </div>
       <div class="divide-y divide-line">
-        {posts.length === 0 && <p class="py-4 text-fg-faint">No posts yet. Check back soon.</p>}
+        {posts.length === 0 && <p class="font-mono py-4 text-[13px] text-fg-faint">No posts yet. Check back soon.</p>}
         {posts.map((post) => (
           <a href={`/blog/${post.id}`} class="group block py-5">
-            <p class="text-sm text-fg-faint">
+            <p class="font-mono text-[13px] tracking-[0.4px] text-fg-faint">
               {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
-            <h3 class="mt-1 font-serif text-xl font-semibold leading-snug text-fg transition group-hover:text-accent">
+            <h3 class="font-sans mt-1.5 text-xl font-normal leading-snug text-fg transition group-hover:text-fg-soft">
               {post.data.title}
             </h3>
-            <p class="mt-1.5 text-[0.9375rem] leading-relaxed text-fg-soft">{post.data.description}</p>
+            <p class="font-mono mt-1.5 text-[13px] leading-[1.6] tracking-[0.4px] text-fg-soft">{post.data.description}</p>
           </a>
         ))}
       </div>

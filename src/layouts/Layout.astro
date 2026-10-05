@@ -1,12 +1,12 @@
 ---
 import { SITE } from '../lib/site';
-import '@fontsource-variable/fraunces';
-import '@fontsource-variable/source-sans-3';
+import '@fontsource-variable/inter';
+import '@fontsource/jetbrains-mono';
 import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -15,15 +15,6 @@ import '../styles/global.css';
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={SITE.description} />
     <title>{SITE.title}</title>
-    <script is:inline>
-      (function () {
-        var saved = localStorage.getItem('theme');
-        var dark =
-          saved === 'dark' ||
-          (saved !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.classList.toggle('dark', dark);
-      })();
-    </script>
   </head>
   <body class="flex min-h-screen flex-col">
     <slot />

@@ -21,25 +21,25 @@ const { Content } = await render(post);
   <main class="mx-auto w-full max-w-2xl flex-1 px-6 py-16">
     <article>
       <header class="mb-10 border-b border-line pb-8">
-        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-fg-faint">
-          <time>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-fg-faint">
+          <time class="font-mono tracking-[0.4px]">
             {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
           <span class="flex flex-wrap gap-1.5">
             {post.data.tags.map((tag) => (
-              <span class="rounded-full border border-line px-2 py-0.5 text-xs text-fg-soft">{tag}</span>
+              <span class="font-mono rounded-full border border-line px-2 py-0.5 text-xs text-fg-soft">{tag}</span>
             ))}
           </span>
         </div>
-        <h1 class="mt-4 font-serif text-3xl font-semibold leading-tight tracking-tight text-fg sm:text-4xl">
+        <h1 class="font-sans mt-4 text-3xl font-normal leading-tight tracking-tight text-fg sm:text-4xl">
           {post.data.title}
         </h1>
-        <p class="mt-4 text-lg leading-relaxed text-fg-soft">{post.data.description}</p>
+        <p class="font-mono mt-4 text-[15px] leading-[1.6] tracking-[0.6px] text-fg-soft">{post.data.description}</p>
       </header>
       <div class="prose-blog">
         <Content />
       </div>
-      <a href="/blog" class="mt-12 inline-block text-sm font-medium text-accent hover:underline">
+      <a href="/blog" class="font-mono mt-12 inline-block text-[13px] tracking-[0.4px] text-fg-soft hover:text-fg">
         Back to all writing
       </a>
     </article>
