@@ -25,9 +25,10 @@ const posts = (await getCollection('blog'))
       <p class="font-mono mt-6 max-w-xl text-[15px] leading-[1.6] tracking-[0.6px] text-fg-soft">
         {SITE.description}
       </p>
-      <div class="mt-10 flex flex-wrap gap-3">
-        <a href="/blog" class="font-sans rounded-sm bg-accent px-4 py-2 text-[15px] font-normal text-accent-fg transition hover:opacity-90">Read the writing</a>
-        <a href="/about" class="font-sans rounded-sm border border-line px-4 py-2 text-[15px] font-normal text-fg-soft transition hover:text-fg">About me</a>
+      <div class="font-mono mt-8 flex flex-wrap gap-5 text-[13px] tracking-[0.4px]">
+        <a href={SITE.github} class="text-fg-soft transition hover:text-fg">GitHub</a>
+        <a href={SITE.linkedin} class="text-fg-soft transition hover:text-fg">LinkedIn</a>
+        <a href={`mailto:${SITE.email}`} class="text-fg-soft transition hover:text-fg">Email</a>
       </div>
     </section>
 
