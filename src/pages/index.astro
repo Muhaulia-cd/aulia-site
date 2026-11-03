@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import HeroGreeting from '../components/HeroGreeting.tsx';
 import { SITE } from '../lib/site';
 import { getCollection } from 'astro:content';
 
@@ -17,7 +18,7 @@ const posts = (await getCollection('blog'))
   <main class="mx-auto w-full max-w-3xl flex-1 px-6">
     <section class="py-24 sm:py-32">
       <p class="font-mono mb-6 text-[13px] tracking-[0.4px] text-[#2fbf71]">
-        Hi, it's Aulia here
+        <HeroGreeting client:load />
       </p>
       <h1 class="font-sans text-5xl font-normal leading-[1.06] tracking-[-0.04em] text-fg sm:text-7xl">
         {SITE.name}
